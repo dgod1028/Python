@@ -7,10 +7,10 @@ import csv
 import sys
 
 #API Input your keys and secrets here
-CONSUMER_KEY =  '8PIXARc1gjTkK0epb1BhI46p8'
-CONSUMER_SECRET = 'Y4bViqnoMjKMtmVGKJV8HX60HJ3P0ocVWkZN4hEeBdcc4YI72X'
-ACCESS_TOKEN = '2563569822-zRH6HkBTm9zOZPhDmXuCzPwStQAs4gmshZsyeNm'
-ACCESS_SECRET = 'LZncmwSvIQThxKXFGx0Ry00urgJlLw9b8sTi4Fojm9fLH'
+CONSUMER_KEY =  '***'
+CONSUMER_SECRET = '***'
+ACCESS_TOKEN = '***'
+ACCESS_SECRET = '***'
 
 #twitterAPI
 api = twitter.Api(consumer_key=CONSUMER_KEY,
