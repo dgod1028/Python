@@ -203,5 +203,16 @@ if __name__ == "__main__":
     plt.xlabel('Date')
     plt.ylabel('Comment Freq.')
     plt.legend(["Pos","Neg"])
-    plt.show()
 
+
+    ## 抽出推特数量比较多的天数
+    twi = 10  # <- 一天推特数大于10就抽取日期
+    important_date = []
+    print("找出推特数大于%i的所有日期" %twi)
+    for i in range(df_s.shape[0]):
+        if df_s.iloc[i,:].sum() >  twi:
+            important_date.append( (df_s.index[i],df_s.iloc[i,0],df_s.iloc[i,1]) )
+    for i in important_date:
+        print("%s 推特数有 %i, 其中Pos= %i, Neg= %i" %(i[0],i[1]+i[2],i[1],i[2]))
+
+    plt.show()
