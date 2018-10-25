@@ -32,8 +32,7 @@ class Sentiment:
         :param prob     : If dictionary have probability. If so, input pos_dict and neg_dict should be a list file.
                                                            If prob = True, need to input a matrix (n * 2)
         """
-        assert isinstance(pos_dict, str), 'pos_dict must be a path of text data (xlsx format)'
-        assert isinstance(neg_dict, str), 'neg_dict must be a path of text data (xlsx format)'
+
         print('正在载入词典:   ',end='\t')
         if prob:  ## 有概率的词典，用的是 AFINN-111
             self.sen_dict = defaultdict()
@@ -45,6 +44,8 @@ class Sentiment:
                 self.sen_dict[self.sen_df.iloc[i,0]] = self.sen_df.iloc[i,1]
 
         else:    ## 无概率的词典，用的是单位的
+            assert isinstance(pos_dict, str), 'pos_dict must be a path of text data (txt format)'
+            assert isinstance(neg_dict, str), 'neg_dict must be a path of text data (txt format)'
             self.pos_dict = set(self.read_txt(POS_LIST))
             self.neg_dict = set(self.read_txt(NEG_LIST))
         print('载入完毕')
@@ -163,10 +164,10 @@ if __name__ == "__main__":
 
     # 3. 初始化组 (载入词典， 定义词典类型)
     #s = Sentiment(pos_dict=POS_LIST, neg_dict=NEG_LIST, prob=False, debug=True)    #<- 无概率词典
-    s = Sentiment(pos_dict= POS_LIST, neg_dict= NEG_LIST,prob=True,debug = True)   #<- 有概率词典 AFINN-111
+    s = Sentiment(pos_dict= POS_LIST, neg_dict= NEG_LIST,prob=True,debug= True )   #<- 有概率词典 AFINN-111
 
     # 4. 做情感分析
-    scores = s.sentimental_analysis(texts, multi=True, core = 4)
+    scores = s.sentimental_analysis(texts, multi=False, core = 4)
 
     # 5. 查看分数（可略过)
     #print(scores)
